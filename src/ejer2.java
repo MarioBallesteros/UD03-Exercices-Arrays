@@ -35,9 +35,14 @@ public class ejer2 {
     }
     protected static int askForArraySize() {
         Scanner sc = new Scanner(System.in);
+        boolean exit = false;
         int size;
-        System.out.println("size for the array:");
-        size = sc.nextInt();
+        do {
+            System.out.println("size for the array:");
+            size = sc.nextInt();
+            if (size>=0) exit=true;
+        }while(!exit);
+
         return size;
     }
 
