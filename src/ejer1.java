@@ -9,7 +9,7 @@ public class ejer1 {
         showArray(numberArray);
 
     }
-    private static void fillArray(int[] numberArray) {
+    protected static void fillArray(int[] numberArray) {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < numberArray.length; i++) {
             System.out.println("Enter number nº"+i+":");

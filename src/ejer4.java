@@ -6,33 +6,45 @@ public class ejer4 {
         array = new int[ejer2.askForArraySize()];
 
         fillArray(array);
-        ejer1.showArray(array);
+        showArrayWithHigher(array);
     }
 
-    private static int createRandomPrimeNumber(){
-        int max=9,min=0;
-        int number=100;
-        boolean notprime =false;
+    private static int createRandomPrimeNumber(int min, int max){
+        int number;
+        boolean prime =false;
+        Scanner sc = new Scanner(System.in);
+
         do {
             number = (int) (Math.random() * (max-min));
-            System.out.println(number);
-            for (int i = 2; i < number; i++) {
-                if (number % i == 0) {
-                    notprime = true;
-                }
-            }
-        }while (notprime);
+            if (esPrimo(number)) prime = true;
+        }while (!prime);
         return number;
-
     }
 
     protected static void fillArray(int[] numberArray) {
+        int max,min;
         Scanner sc = new Scanner(System.in);
+
+        System.out.println("Range for the numbers:");
+        System.out.println("lower num:");
+        min = sc.nextInt();
+        System.out.println("higher num:");
+        max = sc.nextInt();
         for (int i = 0; i < numberArray.length; i++) {
-            numberArray[i] = createRandomPrimeNumber();
+            numberArray[i] = createRandomPrimeNumber(min,max);
         }
     }
 
+    protected static void showArrayWithHigher(int[] numberArray) {
+        int higher=0;
+        for (int i = 0; i < numberArray.length ; i++) {
+            System.out.println("nº"+i+" = "+numberArray[i]);
+            if (numberArray[i]>=higher){
+                higher=numberArray[i];
+            }
+        }
+        System.out.println("higher number:"+higher);
+    }
     public static boolean esPrimo(int numero) {
         if (numero == 0 || numero == 1 || numero == 4) {
             return false;
